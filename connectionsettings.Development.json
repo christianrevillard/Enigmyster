@@ -1,0 +1,5 @@
+{
+   "ConnectionString": {
+    "EnigmysterDb": "Server=.\\SQLEXPRESS;Database=Enigmyster;Trusted_Connection=True;"
+  }
+}

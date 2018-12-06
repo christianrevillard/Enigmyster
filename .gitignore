@@ -231,7 +231,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
-<<<<<<< HEAD
-=======
-appsettings.Production.json 
->>>>>>> ddc668c8540d2a620d51c20ec7cc8d45a9db6590
+connectionsettings.Production.json 

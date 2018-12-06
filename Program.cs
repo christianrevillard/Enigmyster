@@ -18,15 +18,23 @@ namespace Enigmyster
         }
 
 
-    //     .UseKestrel(options =>
-    //{
-    //        options.Listen(IPAddress.Any, 443, listenOptions =>
-    //        {
-    //            listenOptions.UseHttps("server.pfx", "password");
-    //        });
-    //    })
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        //     .UseKestrel(options =>
+        //{
+        //        options.Listen(IPAddress.Any, 443, listenOptions =>
+        //        {
+        //            listenOptions.UseHttps("server.pfx", "password");
+        //        });
+        //    })
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost
+                .CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .ConfigureAppConfiguration((webHostBuilder, configBuilder) =>
+                {
+                    IHostingEnvironment env = webHostBuilder.HostingEnvironment;
+                    configBuilder.AddJsonFile($"connectionsettings.{env.EnvironmentName}.json");
+                });
+        }
     }
 }

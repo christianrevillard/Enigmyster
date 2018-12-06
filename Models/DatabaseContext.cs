@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace Enigmyster.Models
 {
@@ -8,11 +9,14 @@ namespace Enigmyster.Models
     {
         public DatabaseContext CreateDbContext(string[] args)
         {
-            var builder = new DbContextOptionsBuilder<DatabaseContext>();
-            builder.UseSqlServer(
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("connectionsettings.Development.json")
+//                .AddJsonFile("connectionsettings.Production.json")
+                .Build();
 
-               "Server=.\\SQLEXPRESS;Database=Enigmyster;Trusted_Connection=True;MultipleActiveResultSets=true"
-);
+            var builder = new DbContextOptionsBuilder<DatabaseContext>();
+            builder.UseSqlServer(configuration["ConnectionString:EnigmysterDb"]);
             return new DatabaseContext(builder.Options);
         }
     }
