@@ -13,7 +13,7 @@ namespace Enigmyster.Models
 
                 //TODO, better than this..
 
-                //"Data Source=SQL6001.site4now.net;Initial Catalog=DB_A4355F_enigmyster;User Id=DB_A4355F_enigmyster_admin;Password=Moricio7!;"
+                //"Data Source=SQL6001.site4now.net;Initial Catalog=DB_A4355F_enigmyster;User Id=DB_A4355F_enigmyster_admin;Password=XXX;"
 
 
 
